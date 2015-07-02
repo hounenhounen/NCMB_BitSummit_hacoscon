@@ -76,8 +76,6 @@ public class Timer : MonoBehaviour {
 	// Goal到着が検知されたとき
 	void OnGoal(){
 		goal = true;
-		NCMBObject timeClass = new NCMBObject("Time");
-		timeClass["time"] = lapTime;
-		timeClass.SaveAsync();
+
 	}
 }
