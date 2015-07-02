@@ -17,12 +17,8 @@ public class Runner : MonoBehaviour {
 			if (Input.gyro.enabled) {
 				Quaternion gyro = Input.gyro.attitude;
 				Quaternion action_gyro = Quaternion.Euler (90, 0, 0) * (new Quaternion (-gyro.x, -gyro.y, gyro.z, gyro.w));
-				Vector3 p = new Vector3 (0, 0, Speed);
-				GetComponent<Rigidbody> ().AddForce (p);
-				Vector3 c = new Vector3 (transform.position.x - 0.1f*action_gyro.z, initpositiony, transform.position.z);
-				transform.position = c;
-				Vector3 r = new Vector3 (0, action_gyro.z * 180 / Mathf.PI, 0);
-				transform.rotation = Quaternion.Euler (r);
+				Vector3 p = new Vector3 (action_gyro.z, 0, Speed);
+				transform.position += p;
 			}else{
 				//シュミレーター上で動かすための、キーボードの入力を受け付ける
 				if(Input.GetKey ("up")){
