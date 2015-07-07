@@ -37,23 +37,23 @@ public class createScript : MonoBehaviour {
 	}
 */	
 	void CreateEnemy (){
-		int boxcount = 0;
+
 		if (Random.Range (0, 3) == 0) {
 			Instantiate (enemy1, new Vector3 (-5f, 0f, enemyBorder + defdiff), enemy1.transform.rotation);
-			boxcount = boxcount + 1;
+
 		}
 		if (Random.Range (0, 3) == 0) {
 			Instantiate (enemy2, new Vector3 (-1.8f, 0f, enemyBorder + defdiff), enemy2.transform.rotation);
-			boxcount = boxcount + 1;
+
 		}
 		if (Random.Range (0, 3) == 0) {
 			Instantiate (enemy3, new Vector3 (1.8f, 0f, enemyBorder + defdiff), enemy3.transform.rotation);
-			boxcount = boxcount + 1;
+
 		}
-		if ((Random.Range (0, 3) == 0) && (boxcount < 3)) {
+		if ((Random.Range (0, 3) == 0)) {
 			Instantiate (enemy4, new Vector3 (5f, 0f, enemyBorder + defdiff), enemy3.transform.rotation);
 		}
 		enemyBorder += Random.Range (0, 3)*10;
-		Debug.Log (boxcount.ToString());
+
 	}
 }

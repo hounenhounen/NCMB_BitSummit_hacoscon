@@ -3,13 +3,8 @@ using System.Collections;
 
 public class Runner : MonoBehaviour {
 	private GUIStyle labelStyle;
-	float initpositionx = -9;
-	float initpositiony = 0.3f;
-	float initpositionz = -21;
 	Quaternion gyro;
 	bool goal = false;
-	private Vector3 acceleration;
-	int count = 0;
 	public float Speed = 0.3f;
 	void Update () {
 		if (goal == false) {
@@ -17,7 +12,7 @@ public class Runner : MonoBehaviour {
 			if (Input.gyro.enabled) {
 				Quaternion gyro = Input.gyro.attitude;
 				Quaternion action_gyro = Quaternion.Euler (90, 0, 0) * (new Quaternion (-gyro.x, -gyro.y, gyro.z, gyro.w));
-				Vector3 p = new Vector3 (action_gyro.z, 0, Speed);
+				Vector3 p = new Vector3 (action_gyro.x, 0, Speed);
 				transform.position += p;
 			}else{
 				//シュミレーター上で動かすための、キーボードの入力を受け付ける
