@@ -4,7 +4,7 @@ using System.Collections;
 public class MyCameraController : MonoBehaviour {
 	private GUIStyle labelStyle;
 	Quaternion start_gyro;
-	
+	Quaternion gyro;
 	void Start()
 	{
 		this.labelStyle = new GUIStyle();
@@ -19,8 +19,9 @@ public class MyCameraController : MonoBehaviour {
 		Input.gyro.enabled = true;
 		if (Input.gyro.enabled)
 		{
-			Quaternion gyro = Input.gyro.attitude;
-			this.transform.localRotation = Quaternion.Euler(90, 0, 0) * (new Quaternion(-gyro.x,-gyro.y, gyro.z, gyro.w));
+			gyro = Input.gyro.attitude;
+			gyro = Quaternion.Euler(90, 0, 0) * (new Quaternion(-gyro.x,-gyro.y, gyro.z, gyro.w));
+			this.transform.localRotation = gyro;
 			//最初に見ていた向きとゲームの進行方向を合わせる
 			this.transform.localRotation = Quaternion.Euler(0, -start_gyro.y, 0);
 		}
@@ -30,8 +31,6 @@ public class MyCameraController : MonoBehaviour {
 	{
 		if (Input.gyro.enabled)
 		{
-			Quaternion gyro = Input.gyro.attitude;
-			Quaternion see_gyro = Quaternion.Euler(90, 0, 0) * (new Quaternion(-gyro.x, -gyro.y, gyro.z, gyro.w));
 			float x = Screen.width / 10;
 			float y = 0;
 			float w = Screen.width * 8 / 10;
@@ -45,13 +44,13 @@ public class MyCameraController : MonoBehaviour {
 				switch (i)
 				{
 				case 0://X
-					text = string.Format("gyro-X:{0}", see_gyro.x);
+					text = string.Format("gyro-X:{0}", gyro.x);
 					break;
 				case 1://Y
-					text = string.Format("gyro-Y:{0}", see_gyro.y);
+					text = string.Format("gyro-Y:{0}", gyro.y);
 					break;
 				case 2://Z
-					text = string.Format("gyro-Z:{0}", see_gyro.z);
+					text = string.Format("gyro-Z:{0}", gyro.z);
 					break;
 				default:
 					throw new System.InvalidOperationException();

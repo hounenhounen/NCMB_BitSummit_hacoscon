@@ -9,7 +9,7 @@ public class CollisionDetect : MonoBehaviour {
 			return;
 		}
 		
-		//UnityちゃんがGoalについたら書くスクリプトのOnGoalを作動させる
+		//Goalについたら書くスクリプトのOnGoalを作動させる
 		if(col.name == "Goal"){
 			gameObject.SendMessage("OnGoal");
 			return;

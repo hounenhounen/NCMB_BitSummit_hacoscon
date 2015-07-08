@@ -38,7 +38,7 @@ public class Timer : MonoBehaviour {
 			// ゴールタイムを表示
 			float goal_x = Screen.width / 2;
 			float goal_y = Screen.height / 5;
-			float goal_w = Screen.width * 2/ 10;
+			float goal_w = Screen.width * 3/ 10;
 			float goal_h = Screen.height / 10;
 			if(ranking == false){
 				GUI.Label (new Rect (goal_x - goal_w/2, goal_y, goal_w, goal_h), "Your Goal Time!");
