@@ -10,7 +10,8 @@ public class MyCameraController : MonoBehaviour {
 		this.labelStyle = new GUIStyle();
 		this.labelStyle.fontSize = Screen.height / 22;
 		this.labelStyle.normal.textColor = Color.white;
-		start_gyro = StartCameraController.ini_gyro;
+		//start_gyro = StartCameraController.ini_gyro;
+
 		
 	}
 	
@@ -21,7 +22,7 @@ public class MyCameraController : MonoBehaviour {
 		{
 			gyro = Input.gyro.attitude;
 			gyro = Quaternion.Euler(90, 0, 0) * (new Quaternion(-gyro.x,-gyro.y, gyro.z, gyro.w));
-			this.transform.localRotation = new Quaternion(gyro.x,gyro.y-start_gyro.y, gyro.z, gyro.w);
+			this.transform.localRotation = Quaternion.Inverse(StartCameraController.ini_gyro) * gyro;
 		}
 	}
 	//ジャイロセンサの値を表示するプログラム
