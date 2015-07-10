@@ -12,7 +12,7 @@ public class Runner : MonoBehaviour {
 			if (Input.gyro.enabled) {
 				Quaternion gyro = Input.gyro.attitude;
 				Quaternion action_gyro = Quaternion.Euler (90, 0, 0) * (new Quaternion (-gyro.x, -gyro.y, gyro.z, gyro.w));
-				Vector3 p = new Vector3 (action_gyro.x, 0, Speed);
+				Vector3 p = new Vector3 (action_gyro.z, 0, Speed);
 				transform.position += p;
 			}else{
 				//シュミレーター上で動かすための、キーボードの入力を受け付ける

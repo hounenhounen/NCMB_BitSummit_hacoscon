@@ -4,6 +4,7 @@ using System.Collections;
 public class StartCameraController : MonoBehaviour {
 	private GUIStyle labelStyle;
 	public static Quaternion ini_gyro;
+	public static Quaternion gyro;
 	void Start()
 	{
 		this.labelStyle = new GUIStyle();
@@ -16,8 +17,9 @@ public class StartCameraController : MonoBehaviour {
 		Input.gyro.enabled = true;
 		if (Input.gyro.enabled)
 		{
-			ini_gyro = Input.gyro.attitude;
-			this.transform.localRotation = Quaternion.Euler(90, 0, 0) * (new Quaternion(-ini_gyro.x,-ini_gyro.y, ini_gyro.z, ini_gyro.w)); 
+			gyro = Input.gyro.attitude;
+			ini_gyro = Quaternion.Euler(90, 0, 0) * (new Quaternion(-gyro.x,-gyro.y,gyro.z,gyro.w)); 
+			this.transform.localRotation = ini_gyro;
 		}
 	}
 	//ジャイロセンサの値を表示するプログラム
